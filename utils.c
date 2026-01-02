@@ -1,38 +1,66 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jihad <jihad@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/02 02:34:46 by jihad             #+#    #+#             */
+/*   Updated: 2026/01/02 16:11:57 by jihad            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
-void free_map(char **map)
+void	free_map(char **map)
 {
-    int i = 0;
-    while (map[i])
-    {
-        free(map[i]);
-        i++;
-    }
-    free(map);
+	int	i;
+
+	if (!map)
+		return ;
+	i = 0;
+	while (map[i])
+	{
+		free(map[i]);
+		i++;
+	}
+	free(map);
 }
 
 int	check_av(int ac, char **av)
 {
-	if(ac != 2)
+	if (ac != 2)
 		return (0);
-	if(!(ft_strnstr(av[1],".ber",ft_strlen(av[1]))))
+	if (!(ft_strnstr(av[1], ".ber\0", ft_strlen(av[1]))))
 		return (0);
-	if(!av[1])
+	if (!av[1])
 		return (0);
 	return (1);
 }
+
 void	exit_it(char *msg)
 {
-	if(msg)
-		ft_putstr_fd(msg,2);
-	exit (1);
+	if (msg)
+		ft_putstr_fd(msg, 2);
+	exit(1);
 }
-void print_map(char **map)
+
+int	map_height(char **map)
 {
-	int i = 0;
-	while(map[i])
-	{
-		printf("%s",map[i]);
+	int	i;
+
+	i = 0;
+	while (map[i])
 		i++;
-	}
+	return (i);
+}
+
+int	map_width(char **map)
+{
+	int	len;
+
+	len = ft_strlen(map[0]);
+	if (map[0][len - 1] == '\n')
+		len--;
+	return (len);
 }

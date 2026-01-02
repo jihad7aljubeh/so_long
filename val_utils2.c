@@ -1,78 +1,91 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   val_utils2.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jihad <jihad@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/02 02:35:33 by jihad             #+#    #+#             */
+/*   Updated: 2026/01/02 04:03:56 by jihad            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
-int check_walls(char **map)
+static int	check_row(char *row)
 {
-	int i;
-	int j;
-	t_game  game;
-    game.height = map_height(map);
-	game.width = map_width(map);
-	i = 0;
-	while(map[i])
+	int	j;
+
+	j = 0;
+	while (row[j] && row[j] != '\n')
 	{
-		j = 0;
-		if(i == 0 || i == (game.height - 1))
-		{
-			while(map[i][j])
-			{
-				if(map[i][j] == '0')
-					return (0);
-				j++;
-			}
-		}
-		else
-		{
-			if(map[i][0] == '0' || map[i][game.width - 1] == '0')
-				return(0);
-		}
-		i++;
-	} 
+		if (row[j] != '1')
+			return (0);
+		j++;
+	}
 	return (1);
 }
 
-int count_elements(char **map)
+int	check_walls(char **map)
 {
-	int i;
-	int p;
-	int e;
-	int c;
-	int j;
+	int	i;
+	int	height;
+	int	width;
+
+	height = map_height(map);
+	width = map_width(map);
+	i = 0;
+	while (map[i])
+	{
+		if (i == 0 || i == (height - 1))
+		{
+			if (!check_row(map[i]))
+				return (0);
+		}
+		else
+		{
+			if (map[i][0] != '1' || map[i][width - 1] != '1')
+				return (0);
+		}
+		i++;
+	}
+	return (1);
+}
+
+static void	count_row(char *row, int *p, int *e, int *c)
+{
+	int	j;
+
+	j = 0;
+	while (row[j])
+	{
+		if (row[j] == 'P')
+			(*p)++;
+		if (row[j] == 'E')
+			(*e)++;
+		if (row[j] == 'C')
+			(*c)++;
+		j++;
+	}
+}
+
+int	count_elements(char **map)
+{
+	int	i;
+	int	p;
+	int	e;
+	int	c;
 
 	i = 0;
 	p = 0;
 	e = 0;
 	c = 0;
-	while(map[i])
+	while (map[i])
 	{
-		j = 0;
-		while(map[i][j])
-		{
-			if(map[i][j] == 'P')
-				p++;
-			if(map[i][j] == 'E')
-				e++;
-			if(map[i][j] == 'C')
-				c++;
-			j++;
-		}
+		count_row(map[i], &p, &e, &c);
 		i++;
 	}
-	if(c < 1 || e != 1 || p != 1)
-		return  (0);
+	if (c < 1 || e != 1 || p != 1)
+		return (0);
 	return (1);
-}
-
-int	map_height(char **map)
-{
-	int i;
-
-	i = 0;
-	while (map[i])
-		i++;
-	return (i);
-}
-
-int map_width(char **map)
-{
-	return (ft_strlen(map[0]));
 }
