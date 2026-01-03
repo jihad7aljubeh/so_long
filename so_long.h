@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jihad <jihad@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jalju-be <jalju-be@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 02:34:42 by jihad             #+#    #+#             */
-/*   Updated: 2026/01/02 16:05:41 by jihad            ###   ########.fr       */
+/*   Updated: 2026/01/02 17:49:29 by jalju-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	ft_putnbr_fd(int n, int fd);
 void	exit_it(char *msg);
 int		char_exists(const char *s, char c);
 void	init_game(t_game *game);
-void	init_mlx(t_game *game);
+int		init_mlx(t_game *game);
 int		load_textures(t_game *game);
 void	draw_map(t_game *game);
 void	draw_title(t_game *game, char tile, int x, int y);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jihad <jihad@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jalju-be <jalju-be@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 02:33:55 by jihad             #+#    #+#             */
-/*   Updated: 2026/01/02 16:12:49 by jihad            ###   ########.fr       */
+/*   Updated: 2026/01/03 17:29:45 by jalju-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,12 @@ int	main(int ac, char **av)
 
 	game.map = read_map(ac, av);
 	init_game(&game);
-	init_mlx(&game);
-	if(load_textures(&game))
+	if (init_mlx(&game))
+	{
+		cleanup_game(&game);
+		exit_it("Error: Failed to load textures\n");
+	}
+	if (load_textures(&game))
 	{
 		cleanup_game(&game);
 		exit_it("Error: Failed to load textures\n");

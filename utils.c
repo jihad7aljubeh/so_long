@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jihad <jihad@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jalju-be <jalju-be@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 02:34:46 by jihad             #+#    #+#             */
-/*   Updated: 2026/01/02 16:11:57 by jihad            ###   ########.fr       */
+/*   Updated: 2026/01/03 17:27:34 by jalju-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	check_av(int ac, char **av)
 {
 	if (ac != 2)
 		return (0);
-	if (!(ft_strnstr(av[1], ".ber\0", ft_strlen(av[1]))))
+	if (!(ft_strnstr(av[1], ".ber'\0'", ft_strlen(av[1]))))
 		return (0);
 	if (!av[1])
 		return (0);
