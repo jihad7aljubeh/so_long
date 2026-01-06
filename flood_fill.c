@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jihad <jihad@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jalju-be <jalju-be@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 02:34:15 by jihad             #+#    #+#             */
-/*   Updated: 2026/01/02 04:23:32 by jihad            ###   ########.fr       */
+/*   Updated: 2026/01/04 18:09:20 by jalju-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,7 @@ static void	flood_fill(char **map, int x, int y, int *found)
 	if (map[y][x] == 'C')
 		found[0]++;
 	if (map[y][x] == 'E')
-	{
 		found[1] = 1;
-		map[y][x] = 'F';
-		return ;
-	}
 	map[y][x] = 'F';
 	flood_fill(map, x + 1, y, found);
 	flood_fill(map, x - 1, y, found);

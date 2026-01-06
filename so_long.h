@@ -6,7 +6,7 @@
 /*   By: jalju-be <jalju-be@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 02:34:42 by jihad             #+#    #+#             */
-/*   Updated: 2026/01/02 17:49:29 by jalju-be         ###   ########.fr       */
+/*   Updated: 2026/01/04 17:10:47 by jalju-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct s_game
 	void	*img_exit;
 	int		img_width;
 	int		img_height;
+	int		eflag;
 }	t_game;
 
 int		check_map_chars(char **map);

@@ -6,7 +6,7 @@
 /*   By: jalju-be <jalju-be@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 02:33:55 by jihad             #+#    #+#             */
-/*   Updated: 2026/01/03 17:29:45 by jalju-be         ###   ########.fr       */
+/*   Updated: 2026/01/04 18:19:11 by jalju-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	init_game(t_game *game)
 	game->img_player = NULL;
 	game->img_exit = NULL;
 	game->img_collect = NULL;
+	game->eflag = 0;
 }
 
 static char	**fill_map(int fd, char **map)
@@ -84,7 +85,10 @@ char	**read_map(int ac, char **av)
 		exit_it("Error\n");
 	map = malloc(sizeof(char *) * 1024);
 	if (!map)
+	{
+		close(fd);
 		exit_it("Error: Memory allocation failed.\n");
+	}
 	map = fill_map(fd, map);
 	if (!validate_map(map))
 	{

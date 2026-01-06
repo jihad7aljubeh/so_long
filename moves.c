@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jihad <jihad@student.42.fr>                +#+  +:+       +#+        */
+/*   By: jalju-be <jalju-be@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 02:36:18 by jihad             #+#    #+#             */
-/*   Updated: 2026/01/02 02:36:26 by jihad            ###   ########.fr       */
+/*   Updated: 2026/01/04 20:37:02 by jalju-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,22 @@ void	move_left(t_game *game)
 void	move_right(t_game *game)
 {
 	move_player(game, 1, 0);
+}
+
+void	draw_map(t_game *game)
+{
+	int	y;
+	int	x;
+
+	y = 0;
+	while (y < game->height)
+	{
+		x = 0;
+		while (x < game->width)
+		{
+			draw_title(game, game->map[y][x], x, y);
+			x++;
+		}
+		y++;
+	}
 }

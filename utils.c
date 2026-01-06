@@ -6,7 +6,7 @@
 /*   By: jalju-be <jalju-be@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 02:34:46 by jihad             #+#    #+#             */
-/*   Updated: 2026/01/03 17:27:34 by jalju-be         ###   ########.fr       */
+/*   Updated: 2026/01/04 20:16:40 by jalju-be         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,25 @@ void	free_map(char **map)
 
 int	check_av(int ac, char **av)
 {
+	int		strlenl;
+	int		extlen;
+	char	*ext;
+	int		i;
+
 	if (ac != 2)
-		return (0);
-	if (!(ft_strnstr(av[1], ".ber'\0'", ft_strlen(av[1]))))
 		return (0);
 	if (!av[1])
 		return (0);
+	strlenl = ft_strlen(av[1]) - 1;
+	extlen = 3;
+	ext = ".ber";
+	i = 0;
+	while (av[1][strlenl - i] != 0 && extlen - i >= 0)
+	{
+		if (av[1][strlenl - i] != ext[extlen - i])
+			return (0);
+		i++;
+	}
 	return (1);
 }
 
